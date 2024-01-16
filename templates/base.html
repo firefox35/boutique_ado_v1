@@ -23,7 +23,10 @@
     />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <link rel="shortcut icon" href="#" />
-    {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+    {% endblock %} 
+    {% block extra_css %} 
+    {% endblock %} 
+    {% block corejs %}
     <script
       src="https://kit.fontawesome.com/e6e35b4326.js"
       crossorigin="anonymous"
@@ -43,6 +46,7 @@
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
     {% endblock %} 
     {% block extra_js %} 
