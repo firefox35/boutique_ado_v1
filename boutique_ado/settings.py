@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@qi4e@jj+*dv@(r^87$xi+p3zh#x$qq%lu%s4xaht&6)tw(+0b'
+SECRET_KEY = os.environ.get('SECRET_KEY', )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['boutique-ado-app-8ec18497141f.herokuapp.com','8000-firefox35-boutique-ado-v-3nxhuj3yae.us2.codeanyapp.com']
 
