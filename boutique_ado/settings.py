@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+if os.path.isfile('env.py'):
+    import env
 import dj_database_url
 
 
@@ -28,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', )
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['boutique-ado-app-8ec18497141f.herokuapp.com','8000-firefox35-boutique-ado-v-3nxhuj3yae.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['boutique-ado-app-8ec18497141f.herokuapp.com',
+                 '8000-firefox35-boutique-ado-v-3nxhuj3yae.us2.codeanyapp.com']
 
 
 # Application definition
@@ -136,7 +139,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 
 # Password validation
