@@ -23,10 +23,7 @@
     />
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <link rel="shortcut icon" href="#" />
-    {% endblock %} 
-    {% block extra_css %} 
-    {% endblock %} 
-    {% block corejs %}
+    {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
     <script
       src="https://kit.fontawesome.com/e6e35b4326.js"
       crossorigin="anonymous"
@@ -48,9 +45,7 @@
     ></script>
     <script src="https://js.stripe.com/v3/"></script>
 
-    {% endblock %} 
-    {% block extra_js %} 
-    {% endblock %}
+    {% endblock %} {% block extra_js %} {% endblock %}
 
     <title>Boutique Ado {% block extra_title %} {% endblock %}</title>
   </head>
@@ -107,10 +102,11 @@
               </a>
               <div
                 class="dropdown-menu border-0"
-                aria-labelledby="user-options">
+                aria-labelledby="user-options"
+              >
                 {% if request.user.is_authenticated %} 
-                    {% if request.user.is_superuser %}
-                        <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
                     {% endif %}
                     <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                     <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -123,15 +119,13 @@
             <li class="list-inline-item">
               <a
                 class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                href="{% url 'view_bag' %}">
+                href="{% url 'view_bag' %}"
+              >
                 <div class="text-center">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
-                    {% if grand_total %} 
-                        ${{ grand_total|floatformat:2 }} 
-                    {% else %}
-                        $0.00 
-                    {% endif %}
+                    {% if grand_total %} ${{ grand_total|floatformat:2 }} 
+                    {% else %} $0.00 {% endif %}
                   </p>
                 </div>
               </a>
@@ -148,8 +142,7 @@
             data-target="#main-nav"
             aria-controls="main-nav"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           {% include 'includes/mobile-top-header.html' %} 
@@ -166,32 +159,29 @@
     </header>
 
     {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+    <div class="message-container">
+      {% for message in messages %} 
+      {% with message.level as level %} 
+      {% if level == 40 %} 
+      {% include 'includes/toasts/toast_error.html' %} 
+      {% elif level == 30 %} 
+      {% include 'includes/toasts/toast_warning.html' %} 
+      {% elif level == 25 %} 
+      {% include 'includes/toasts/toast_success.html' %} 
+      {% else %} 
+      {% include 'includes/toasts/toast_info.html' %} 
+      {% endif %} 
+      {% endwith%} 
+      {% endfor %}
+    </div>
     {% endif %} 
-
     {% block page_header %} 
     {% endblock %} 
-
     {% block content %} 
-    {% endblock %}
-     
-    {% block postloadjs %} 
+    {% endblock %} 
+    {% block postloadjs %}
     <script type="text/javascript">
-        $('.toast').toast('show');
+      $(".toast").toast("show");
     </script>
     {% endblock %}
   </body>
