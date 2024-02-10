@@ -102,35 +102,40 @@
               </a>
               <div
                 class="dropdown-menu border-0"
-                aria-labelledby="user-options">
-                {% if request.user.is_authenticated %} 
-                {% if request.user.is_superuser %}
+                aria-labelledby="user-options"
+              >
+                {% if request.user.is_authenticated %} {% if
+                request.user.is_superuser %}
                 <a href="{% url 'add_product' %}" class="dropdown-item"
-                  >Product Management</a>
+                  >Product Management</a
+                >
                 {% endif %}
                 <a href="{% url 'profile' %}" class="dropdown-item"
-                  >My Profile</a>
+                  >My Profile</a
+                >
                 <a href="{% url 'account_logout' %}" class="dropdown-item"
-                  >Logout</a>
+                  >Logout</a
+                >
                 {% else %}
                 <a href="{% url 'account_signup' %}" class="dropdown-item"
-                  >Register</a>
+                  >Register</a
+                >
                 <a href="{% url 'account_login' %}" class="dropdown-item"
-                  >Login</a>
+                  >Login</a
+                >
                 {% endif %}
               </div>
             </li>
             <li class="list-inline-item">
               <a
                 class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
-                href="{% url 'view_bag' %}">
+                href="{% url 'view_bag' %}"
+              >
                 <div class="text-center">
                   <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                   <p class="my-0">
-                    {% if grand_total %} ${{ grand_total|floatformat:2 }} 
-                    {% else %} 
-                    $0.00 
-                    {% endif %}
+                    {% if grand_total %} ${{ grand_total|floatformat:2 }} {%
+                    else %} $0.00 {% endif %}
                   </p>
                 </div>
               </a>
@@ -151,8 +156,8 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          {% include 'includes/mobile-top-header.html' %} 
-          {% include 'includes/main-nav.html' %}
+          {% include 'includes/mobile-top-header.html' %} {% include
+          'includes/main-nav.html' %}
         </nav>
       </div>
       <div id="delivery-banner" class="row text-center">
@@ -166,22 +171,15 @@
 
     {% if messages %}
     <div class="message-container">
-      {% for message in messages %} 
-      {% with message.level as level %} 
-      {% if level == 40 %} 
-      {% include 'includes/toasts/toast_error.html' %} 
-      {% elif level == 30 %} 
-      {% include 'includes/toasts/toast_warning.html' %} 
-      {% elif level == 25 %} 
-      {% include 'includes/toasts/toast_success.html' %} 
-      {% else %} 
-      {% include 'includes/toasts/toast_info.html' %} 
-      {% endif %} 
-      {%endwith%}
+      {% for message in messages %} {% with message.level as level %} {% if
+      level == 40 %} {% include 'includes/toasts/toast_error.html' %} {% elif
+      level == 30 %} {% include 'includes/toasts/toast_warning.html' %} {% elif
+      level == 25 %} {% include 'includes/toasts/toast_success.html' %} {% else
+      %} {% include 'includes/toasts/toast_info.html' %} {% endif %} {%endwith%}
       {% endfor %}
     </div>
-    {% endif %} {% block page_header %} {% endblock %} 
-    {% block content %} {% endblock %} {% block postloadjs %}
+    {% endif %} {% block page_header %} {% endblock %} {% block content %} {%
+    endblock %} {% block postloadjs %}
     <script type="text/javascript">
       $(".toast").toast("show");
     </script>
